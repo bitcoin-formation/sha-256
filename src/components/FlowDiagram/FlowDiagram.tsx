@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/store/useAppStore';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import './FlowDiagram.css';
 
@@ -22,7 +21,7 @@ export const FlowDiagram = () => {
     );
   }
   
-  const { operation, intermediateValues, description } = currentStep;
+  const { intermediateValues, description } = currentStep;
   
   // Récupérer les valeurs W[] FIXES de l'étape 1 (préparation)
   const allSteps = getSteps();
@@ -208,14 +207,6 @@ export const FlowDiagram = () => {
         {wEntries.length > 3 && <tspan fill="#f093fb">...</tspan>}
       </>
     );
-  };
-  
-  // Obtenir une valeur W spécifique pour le tooltip
-  const getWValue = (index: number): number | null => {
-    if (!currentStep || !currentStep.intermediateValues) return null;
-    const key = `W[${index}]`;
-    const value = currentStep.intermediateValues[key];
-    return typeof value === 'number' ? value : null;
   };
   
   const loopSteps = [

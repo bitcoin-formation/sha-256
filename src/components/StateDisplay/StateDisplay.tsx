@@ -5,7 +5,7 @@ import './StateDisplay.css';
 
 export const StateDisplay = () => {
   const { t } = useTranslation();
-  const { getCurrentStep, getCurrentRound } = useAppStore();
+  const { getCurrentStep } = useAppStore();
   
   const currentStep = getCurrentStep();
   
@@ -117,7 +117,9 @@ export const StateDisplay = () => {
             {Object.entries(intermediateValues).map(([key, value]) => (
               <div key={key} className="intermediate-item">
                 <span className="intermediate-key">{key}:</span>
-                <span className="intermediate-value">{formatHex(value)}</span>
+                <span className="intermediate-value">
+                  {typeof value === 'number' ? formatHex(value) : String(value)}
+                </span>
               </div>
             ))}
           </div>

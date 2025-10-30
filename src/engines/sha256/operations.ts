@@ -1,4 +1,4 @@
-import { Gate, GateType } from '@/types/sha256';
+import { Gate } from '@/types/sha256';
 
 // Opérations bit à bit avec traçage des portes logiques
 
