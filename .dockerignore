@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.git
+.gitignore
+README.md
+.vscode
+.idea
+*.log
+npm-debug.log*
+

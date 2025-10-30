@@ -1,0 +1,77 @@
+{
+  "app": {
+    "title": "SHA-256 Visualization",
+    "subtitle": "Understanding the cryptographic hash algorithm"
+  },
+  "modes": {
+    "title": "Mode",
+    "simple": "Simple Mode",
+    "advanced": "Advanced Mode",
+    "useNativeParams": "Native SHA-256 Parameters"
+  },
+  "controls": {
+    "play": "Play",
+    "pause": "Pause",
+    "stepBack": "Step Back",
+    "stepForward": "Step Forward",
+    "fastBackward": "Fast Backward (Round)",
+    "fastForward": "Fast Forward (Round)",
+    "reset": "Reset to Start",
+    "speed": "Animation Speed"
+  },
+  "input": {
+    "label": "Message to hash",
+    "placeholder": "Enter your message...",
+    "binary": "Binary",
+    "hex": "Hexadecimal",
+    "text": "Text"
+  },
+  "state": {
+    "round": "Round",
+    "operation": "Operation",
+    "input": "Input",
+    "output": "Output",
+    "variables": "State Variables"
+  },
+  "circuit": {
+    "title": "Circuit Type",
+    "asic": "ASIC Circuit",
+    "optic": "Optic Circuit (Coming Soon)",
+    "gates": {
+      "and": "AND",
+      "or": "OR",
+      "xor": "XOR",
+      "not": "NOT",
+      "rotateRight": "Rotate Right",
+      "shiftRight": "Shift Right"
+    }
+  },
+  "operations": {
+    "sigma0": "σ0 (Lowercase Sigma 0)",
+    "sigma1": "σ1 (Lowercase Sigma 1)",
+    "capsigma0": "Σ0 (Uppercase Sigma 0)",
+    "capsigma1": "Σ1 (Uppercase Sigma 1)",
+    "ch": "Ch (Choose)",
+    "maj": "Maj (Majority)"
+  },
+  "code": {
+    "title": "SHA-256 Pseudocode",
+    "currentLine": "Current Line"
+  },
+  "flow": {
+    "title": "SHA-256 Flow Diagram"
+  },
+  "settings": {
+    "title": "Settings",
+    "rounds": "Number of rounds",
+    "messageSize": "Message size (bits)",
+    "showBinary": "Show binary",
+    "showHex": "Show hexadecimal",
+    "highlightChanges": "Highlight changes"
+  },
+  "info": {
+    "simpleMode": "Simplified mode for learning. These parameters do not match standard SHA-256.",
+    "nativeMode": "Native SHA-256 parameters: 64 rounds, 512-bit messages."
+  }
+}
+

@@ -1,0 +1,77 @@
+{
+  "app": {
+    "title": "Visualisation SHA-256",
+    "subtitle": "Comprendre l'algorithme de hachage cryptographique"
+  },
+  "modes": {
+    "title": "Mode",
+    "simple": "Mode Simple",
+    "advanced": "Mode Avancé",
+    "useNativeParams": "Paramètres SHA-256 natifs"
+  },
+  "controls": {
+    "play": "Lecture",
+    "pause": "Pause",
+    "stepBack": "Reculer",
+    "stepForward": "Avancer",
+    "fastBackward": "Reculer rapidement (Round)",
+    "fastForward": "Avancer rapidement (Round)",
+    "reset": "Retour au début",
+    "speed": "Vitesse d'animation"
+  },
+  "input": {
+    "label": "Message à hasher",
+    "placeholder": "Entrez votre message...",
+    "binary": "Binaire",
+    "hex": "Hexadécimal",
+    "text": "Texte"
+  },
+  "state": {
+    "round": "Round",
+    "operation": "Opération",
+    "input": "Entrée",
+    "output": "Sortie",
+    "variables": "Variables d'état"
+  },
+  "circuit": {
+    "title": "Type de circuit",
+    "asic": "Circuit ASIC",
+    "optic": "Circuit Optique (À venir)",
+    "gates": {
+      "and": "ET (AND)",
+      "or": "OU (OR)",
+      "xor": "OU EXCLUSIF (XOR)",
+      "not": "NON (NOT)",
+      "rotateRight": "Rotation droite",
+      "shiftRight": "Décalage droite"
+    }
+  },
+  "operations": {
+    "sigma0": "Σ0 (Sigma minuscule 0)",
+    "sigma1": "Σ1 (Sigma minuscule 1)",
+    "capsigma0": "Σ0 (Sigma majuscule 0)",
+    "capsigma1": "Σ1 (Sigma majuscule 1)",
+    "ch": "Ch (Choose)",
+    "maj": "Maj (Majority)"
+  },
+  "code": {
+    "title": "Pseudo-code SHA-256",
+    "currentLine": "Ligne actuelle"
+  },
+  "flow": {
+    "title": "Schéma de flux SHA-256"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "rounds": "Nombre de rounds",
+    "messageSize": "Taille du message (bits)",
+    "showBinary": "Afficher en binaire",
+    "showHex": "Afficher en hexadécimal",
+    "highlightChanges": "Surligner les changements"
+  },
+  "info": {
+    "simpleMode": "Mode simplifié pour l'apprentissage. Ces paramètres ne correspondent pas au SHA-256 standard.",
+    "nativeMode": "Paramètres natifs SHA-256 : 64 rounds, messages de 512 bits."
+  }
+}
+
