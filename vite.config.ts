@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',  // GitHub Pages gère déjà le /sha-256/ dans l'URL
+  base: '/sha-256/',  // Pour GitHub Pages: https://bitcoin-formation.github.io/sha-256/
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
