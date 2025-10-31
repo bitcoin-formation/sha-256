@@ -46,10 +46,10 @@ export const StateDisplay = () => {
     <div className="state-display">
       <div className="state-header">
         {currentRound !== null && (
-          <div className="round-info">
-            <span className="round-label">{t('state.round')}:</span>
-            <span className="round-value">{currentRound}</span>
-          </div>
+        <div className="round-info">
+          <span className="round-label">{t('state.round')}:</span>
+          <span className="round-value">{currentRound}</span>
+        </div>
         )}
         <div className="operation-info">
           <span className="operation-label">{t('state.operation')}:</span>

@@ -27,7 +27,7 @@ export default defineConfig({
     // Configuration de la couverture de code
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html', 'lcov'],
+      reporter: ['text', 'json', 'html', 'lcov', 'json-summary'],
       reportsDirectory: './coverage',
       include: ['src/**/*.{ts,tsx}'],
       exclude: [
@@ -43,6 +43,11 @@ export default defineConfig({
         branches: 70,
         statements: 70,
       },
+    },
+    
+    // Reporter JSON pour le volume partagé
+    outputFile: {
+      json: './test-reports/sha256-test-results.json',
     },
     
     // Options d'affichage

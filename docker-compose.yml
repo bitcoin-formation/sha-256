@@ -8,9 +8,14 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - test-reports:/app/test-reports  # Volume partagé pour rapports de tests
     environment:
       - NODE_ENV=development
     command: npm run dev -- --host 0.0.0.0
     stdin_open: true
     tty: true
+
+volumes:
+  test-reports:
+    external: true
 
