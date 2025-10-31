@@ -1,0 +1,100 @@
+name: Tests
+
+on:
+  push:
+    branches: ['**']  # Tous les push sur toutes les branches
+  pull_request:
+    branches: ['**']  # Toutes les PR
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [20.x]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install --force
+      
+      - name: Run unit tests
+        run: npm run test:run
+      
+      - name: Generate coverage report
+        run: npm run test:coverage
+        continue-on-error: true
+      
+      - name: Upload coverage to artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 30
+      
+      - name: Comment coverage on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        continue-on-error: true
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+              const total = coverage.total;
+              
+              const comment = `## 📊 Test Coverage Report
+              
+              | Metric | Percentage | Covered / Total |
+              |--------|------------|-----------------|
+              | 🎯 **Lines** | ${total.lines.pct}% | ${total.lines.covered} / ${total.lines.total} |
+              | 🔀 **Branches** | ${total.branches.pct}% | ${total.branches.covered} / ${total.branches.total} |
+              | ⚡ **Functions** | ${total.functions.pct}% | ${total.functions.covered} / ${total.functions.total} |
+              | 📝 **Statements** | ${total.statements.pct}% | ${total.statements.covered} / ${total.statements.total} |
+              
+              ${total.lines.pct >= 70 ? '✅ Coverage threshold met (70%+)' : '⚠️ Coverage below threshold (70%+)'}
+              `;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (error) {
+              console.log('Could not read coverage report:', error);
+            }
+      
+      # Décommenter quand on aura des tests E2E
+      # - name: Install Playwright browsers
+      #   run: npx playwright install --with-deps chromium
+      # 
+      # - name: Run E2E tests
+      #   run: npm run test:e2e
+      #   continue-on-error: true
+      # 
+      # - name: Upload Playwright report
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: playwright-report
+      #     path: playwright-report/
+      #     retention-days: 30
+      
+      - name: Test Summary
+        if: always()
+        run: |
+          echo "## ✅ Tests completed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the artifacts for detailed reports." >> $GITHUB_STEP_SUMMARY
+

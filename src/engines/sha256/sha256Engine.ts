@@ -1,6 +1,6 @@
 import { SHA256Step, SHA256State, SHA256Config } from '@/types/sha256';
 import { INITIAL_HASH, K, SIMPLE_K } from './constants';
-import { capsigma0, capsigma1, sigma0, sigma1, ch, maj, add, getChangedBits } from './operations';
+import { capsigma0, capsigma1, sigma0Pure, sigma1Pure, ch, maj, add, getChangedBits } from './operations';
 import { CODE_LINE_MAPPING } from '@/constants/codeLineMapping';
 
 export class SHA256Engine {
@@ -58,9 +58,9 @@ export class SHA256Engine {
     
     // Les mots restants sont calculés (expansion silencieuse, pas de steps)
     for (let i = 16; i < rounds; i++) {
-      const s0 = sigma0(W[i - 15]);
-      const s1 = sigma1(W[i - 2]);
-      W[i] = add(W[i - 16], s0.result, W[i - 7], s1.result);
+      const s0 = sigma0Pure(W[i - 15]);
+      const s1 = sigma1Pure(W[i - 2]);
+      W[i] = add(W[i - 16], s0, W[i - 7], s1);
     }
     
     return W;

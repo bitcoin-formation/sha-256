@@ -25,6 +25,15 @@ export function getChangedBits(before: number, after: number): number[] {
 }
 
 // Σ0(x) = ROTR²(x) ⊕ ROTR¹³(x) ⊕ ROTR²²(x)
+// Version pure (logique seule)
+export function Sigma0(x: number): number {
+  const rotr2 = rotr(x, 2);
+  const rotr13 = rotr(x, 13);
+  const rotr22 = rotr(x, 22);
+  return (rotr2 ^ rotr13 ^ rotr22) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function capsigma0(x: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   
@@ -46,6 +55,15 @@ export function capsigma0(x: number): { result: number; gates: Gate[] } {
 }
 
 // Σ1(x) = ROTR⁶(x) ⊕ ROTR¹¹(x) ⊕ ROTR²⁵(x)
+// Version pure (logique seule)
+export function Sigma1(x: number): number {
+  const rotr6 = rotr(x, 6);
+  const rotr11 = rotr(x, 11);
+  const rotr25 = rotr(x, 25);
+  return (rotr6 ^ rotr11 ^ rotr25) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function capsigma1(x: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   
@@ -67,6 +85,15 @@ export function capsigma1(x: number): { result: number; gates: Gate[] } {
 }
 
 // σ0(x) = ROTR⁷(x) ⊕ ROTR¹⁸(x) ⊕ SHR³(x)
+// Version pure (logique seule)
+export function sigma0Pure(x: number): number {
+  const rotr7 = rotr(x, 7);
+  const rotr18 = rotr(x, 18);
+  const shr3 = shr(x, 3);
+  return (rotr7 ^ rotr18 ^ shr3) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function sigma0(x: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   
@@ -88,6 +115,15 @@ export function sigma0(x: number): { result: number; gates: Gate[] } {
 }
 
 // σ1(x) = ROTR¹⁷(x) ⊕ ROTR¹⁹(x) ⊕ SHR¹⁰(x)
+// Version pure (logique seule)
+export function sigma1Pure(x: number): number {
+  const rotr17 = rotr(x, 17);
+  const rotr19 = rotr(x, 19);
+  const shr10 = shr(x, 10);
+  return (rotr17 ^ rotr19 ^ shr10) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function sigma1(x: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   
@@ -109,6 +145,15 @@ export function sigma1(x: number): { result: number; gates: Gate[] } {
 }
 
 // Ch(x,y,z) = (x ∧ y) ⊕ (¬x ∧ z)
+// Version pure (logique seule)
+export function chPure(x: number, y: number, z: number): number {
+  const and1 = (x & y) >>> 0;
+  const notX = (~x) >>> 0;
+  const and2 = (notX & z) >>> 0;
+  return (and1 ^ and2) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function ch(x: number, y: number, z: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   
@@ -128,6 +173,15 @@ export function ch(x: number, y: number, z: number): { result: number; gates: Ga
 }
 
 // Maj(x,y,z) = (x ∧ y) ⊕ (x ∧ z) ⊕ (y ∧ z)
+// Version pure (logique seule)
+export function majPure(x: number, y: number, z: number): number {
+  const and1 = (x & y) >>> 0;
+  const and2 = (x & z) >>> 0;
+  const and3 = (y & z) >>> 0;
+  return (and1 ^ and2 ^ and3) >>> 0;
+}
+
+// Version avec gates (pour visualisation)
 export function maj(x: number, y: number, z: number): { result: number; gates: Gate[] } {
   const gates: Gate[] = [];
   

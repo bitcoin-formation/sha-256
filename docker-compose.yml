@@ -1,5 +1,5 @@
 services:
-  sha256-dev:
+  sha256:
     build:
       context: .
       dockerfile: Dockerfile
