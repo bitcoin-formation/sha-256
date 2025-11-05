@@ -64,7 +64,7 @@ export const StateDisplay = () => {
         <h4>{t('state.variables')}</h4>
         
         <div className="variables-grid">
-          {variables.map((varName) => {
+          {variables.map((varName, index) => {
             const beforeValue = stateBefore[varName];
             const afterValue = stateAfter[varName];
             const changed = beforeValue !== afterValue;
@@ -76,7 +76,7 @@ export const StateDisplay = () => {
                 animate={changed ? { scale: [1, 1.05, 1] } : {}}
                 transition={{ 
                   duration: 0.5,
-                  delay: isRotation ? 0 : 0 // Pas de délai pour la rotation, tout en même temps
+                  delay: isRotation ? 0 : index * 0.05 // Animation échelonnée hors rotation
                 }}
               >
                 <div className="variable-header">
