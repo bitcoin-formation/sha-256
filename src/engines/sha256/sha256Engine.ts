@@ -221,7 +221,7 @@ export class SHA256Engine {
         const temp1 = add(state.h, S1.result, chResult.result, constants[i], W[i]);
         this.steps.push({
           round: i,
-          operation: 'ch',
+          operation: 'add',
           stateBefore: { ...state },
           stateAfter: { ...state },
           gates: [],
@@ -278,7 +278,7 @@ export class SHA256Engine {
         const temp2 = add(S0.result, majResult.result);
         this.steps.push({
           round: i,
-          operation: 'maj',
+          operation: 'add',
           stateBefore: { ...state },
           stateAfter: { ...state },
           gates: [],
@@ -309,7 +309,7 @@ export class SHA256Engine {
         
         this.steps.push({
           round: i,
-          operation: 'ch',
+          operation: 'rotation',
           stateBefore,
           stateAfter: state,
           gates: [],
