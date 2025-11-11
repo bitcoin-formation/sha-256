@@ -6,6 +6,7 @@ export type OperationType =
   | 'ch' 
   | 'maj'
   | 'add'
+  | 'rotation'
   | 'prepare_schedule'
   | 'init'
   | 'finalize';
